@@ -213,7 +213,6 @@ def edit_comment(request, post_id, comment_id):
 def delete_comment(request, post_id, comment_id):
     """Удаление комментария"""
     comment = get_object_or_404(Comment, id=comment_id, post_id=post_id)
-    # Только автор может удалить комментарий
     if comment.author != request.user:
         return redirect('blog:post_detail', id=post_id)
     # Обработка POST-запроса на удаление
